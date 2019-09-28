@@ -12,7 +12,7 @@ class Extension extends CompilerExtension
     private $defaults = [
 		'apiKey' => NULL,
 		'domain' => NULL,
-		'servers' => 'https://api.mailgun.net',
+		'endpoint' => 'https://api.mailgun.net',
     ];
 
 
@@ -24,7 +24,7 @@ class Extension extends CompilerExtension
         $builder->addDefinition($this->prefix('mailgun'))
             ->setFactory('Mailgun\Mailgun::create', [
 				$config['apiKey'],
-				$config['servers']
+				$config['endpoint']
             ]);
 
         $builder->getDefinition('mail.mailer')
